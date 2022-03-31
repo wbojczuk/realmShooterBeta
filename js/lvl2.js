@@ -171,7 +171,6 @@ function lvl2Pre() {
             snowmanSpeed = 2;
 
             // WAVE 1 ALERT
-
             document.getElementById("lvlAlertText").textContent = "WAVE 1";
         document.getElementById("potionBar").style.display = "none";
         document.getElementById("lvlAlertText").style.display = "inline-block";
@@ -202,6 +201,23 @@ function lvl2Pre() {
             oonlyOne = 2;
             waveOneScore = score;
             snowmanCounter = 0;
+
+            // WON WAVE 1 ALERT
+            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon");
+            document.getElementById("lvlAlertAnimation").classList.add("alert-icon-green");
+            document.getElementById("lvlAlertText").textContent = "WAVE 1 COMPLETED!";
+        document.getElementById("potionBar").style.display = "none";
+        document.getElementById("lvlAlertText").style.display = "inline-block";
+        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+
+        setTimeout(function(){
+            document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
+            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
+            document.getElementById("potionBar").style.display = "flex";
+        document.getElementById("lvlAlertText").style.display = "none";
+        document.getElementById("lvlAlertAnimation").style.display = "none";
+        }, 4000);
+
         }
     }
 
@@ -217,7 +233,7 @@ function lvl2Pre() {
 
             // WAVE 2 ALERT
 
-            document.getElementById("lvlAlertText").textContent = "WAVE 1";
+            document.getElementById("lvlAlertText").textContent = "WAVE 2";
         document.getElementById("potionBar").style.display = "none";
         document.getElementById("lvlAlertText").style.display = "inline-block";
         document.getElementById("lvlAlertAnimation").style.display = "inline-block";
@@ -227,7 +243,7 @@ function lvl2Pre() {
         document.getElementById("lvlAlertText").style.display = "none";
         document.getElementById("lvlAlertAnimation").style.display = "none";
         }, 4000);
-        
+
         }
 
         if (snowmanCounter == 10) {
@@ -235,6 +251,36 @@ function lvl2Pre() {
             document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
             snowmanSpeed = 2;
         }
+
+        if (snowmanCounter == 20) {
+            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanThree' class='snowman' style='left: 40vw;'></div></div>";
+            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpeed = 1;
+        }
+
+        if (snowmanCounter == 20) {
+        killSnowman("all");
+        snowmanCounter = 0;
+
+
+
+        // WON WAVE 2 ALERT
+            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon");
+            document.getElementById("lvlAlertAnimation").classList.add("alert-icon-green");
+            document.getElementById("lvlAlertText").textContent = "WAVE 2 COMPLETED!";
+        document.getElementById("potionBar").style.display = "none";
+        document.getElementById("lvlAlertText").style.display = "inline-block";
+        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+
+        setTimeout(function(){
+            document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
+            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
+            document.getElementById("potionBar").style.display = "flex";
+        document.getElementById("lvlAlertText").style.display = "none";
+        document.getElementById("lvlAlertAnimation").style.display = "none";
+        }, 4000);
+        }
+
 
 
         // SNOWMAN MOVE
@@ -246,6 +292,12 @@ function lvl2Pre() {
         if ((snowmanCounter % 2 == 0) && (snowmanCounter > 10) && (snowmanCounter < 20)) {
             snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
             snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "double");
+        }
+
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter > 20) && (snowmanCounter < 30)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
+            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "double");
+            snowmanMove(getRndInteger(1, 90), "snowmanThree", snowmanSpeed, "single");
         }
 
 

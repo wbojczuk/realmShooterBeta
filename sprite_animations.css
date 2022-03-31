@@ -47,6 +47,13 @@
     background-position: center;
 }
 
+.alert-icon-green {
+    background: url('img/alert_icon_green_sprite.png') ;
+    animation: hint 2000ms steps(35) infinite;
+    background-size: 3500% 8vw;
+    background-position: center;
+}
+
 
 .snowflake {
     background: url('img/snowflake_sprite.png') ;
@@ -262,6 +269,21 @@
     background-image : url('img/heart_explosion_sprite.png');
     background-size : 2200% 1vw;
     animation : heart_explosion 300ms steps(22);
+}
+.alert-icon-preload {
+    height: 1vw;
+    width: 1vw;
+    background: url('img/alert_icon_sprite.png') ;
+    animation: hint 2000ms steps(35) infinite;
+    background-size: 3500% 1vw;
+}
+
+.alert-icon-green-preload {
+    height: 1vw;
+    width: 1vw;
+    background: url('img/alert_icon_green_sprite.png') ;
+    animation: hint 2000ms steps(35) infinite;
+    background-size: 3500% 1vw;
 }
 
 /* lvl 2 */

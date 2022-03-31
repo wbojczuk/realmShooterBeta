@@ -77,7 +77,9 @@ function preloadFunction(){
     stuffPreload += "<div class='heart-heal-preload preload'></div>";
 
     stuffPreload += "<div class='frost-preload preload'></div>";
-    stuffPreload += "<div class='snow-overlay-preload preload'></div>";
+    stuffPreload += "<div class='alert-icon-preload preload'></div>";
+
+    stuffPreload += "<div class='alert-icon-green-preload preload'></div>";
 
 
 
@@ -129,7 +131,7 @@ function preloadFunction(){
         currentLvl = "menu";
         document.addEventListener("click", setBackgroundMusic);
         snowStorm.toggleSnow();
-      }, 4000);
+      }, 5000);
         
       
       }
