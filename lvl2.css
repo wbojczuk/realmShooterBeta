@@ -11,8 +11,9 @@
 .snowman {
     display: inline-block;
     position: relative;
-    height: 9vw;
-    width: 7.5vw;
+    top: -2vw;
+    height: 11vw;
+    width: 9.5vw;
     user-select: none;
     background: url('img/lvl2/snowman/snowman_idle.png') ;
     animation: snowman_idle 400ms steps(4) infinite;

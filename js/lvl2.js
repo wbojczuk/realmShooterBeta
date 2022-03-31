@@ -9,6 +9,7 @@ var lvl2generationRepeat;
 var snowballNode;
 var snowmanCounter = 0;
 var snowmanSpeed = 0;
+var waveOneScore = 100000;
 
 function lvl2Pre() {
 
@@ -24,6 +25,7 @@ function lvl2Pre() {
     vRndY = 3;
     snowStorm.resume();
     snowmanCounter = 0;
+    snowmanSpeed = 0;
 
    
     randomNum1 = Math.floor(getRndInteger(5, 120));
@@ -109,19 +111,16 @@ function lvl2Pre() {
         
 
         // Bomb Generation
-        if (score < 10 ){
+        if ((score < 100) || ((score > waveOneScore) && (score < waveOneScore + 100))){
         if (counter % 3 == 0) {   
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
-            nodeContainer.appendChild(snowballNode.cloneNode(true)); 
+ 
             
         } 
         if (counter % 5 == 0) {   
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
         } 
         
-        if (counter % 7 == 0) {   
-            nodeContainer.appendChild(snowballNode.cloneNode(true)); 
-        } 
         if (counter % 13 == 0) {
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
@@ -137,30 +136,32 @@ function lvl2Pre() {
     }
 
     // SNOWMAN STUFF
+
+    // WAVE 1
     
-    if (score >= 10) {
+    if ((score >= 100)  && (oonlyOne == 1)) {
 
         snowmanCounter += 1;
 
         // SNOWMAN MOVE
 
-        if ((snowmanCounter % 3 == 0) && (snowmanCounter < 10)) {
-            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed);
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter < 15)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "single");
         }
 
-        if ((snowmanCounter % 2 == 0) && (snowmanCounter > 10) && (snowmanCounter < 20)) {
-            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed);
-            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed);
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter > 15) && (snowmanCounter < 30)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "single");
+            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "single");
 
         }
-        if (snowmanCounter == 20) {
+        if (snowmanCounter == 30) {
             snowmanSpeed = 1;
         }
 
-        if ((snowmanCounter % 1 == 0) && (snowmanCounter > 20) && (snowmanCounter < 25)) {
-            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed);
-            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed);
-            snowmanMove(getRndInteger(1, 90), "snowmanThree", snowmanSpeed);
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter > 30) && (snowmanCounter < 45)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "single");
+            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "single");
+            snowmanMove(getRndInteger(1, 90), "snowmanThree", snowmanSpeed, "single");
         }
 
         // SNOWMAN GENERATION
@@ -169,23 +170,85 @@ function lvl2Pre() {
             document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
             snowmanSpeed = 2;
 
+            // WAVE 1 ALERT
+
+            document.getElementById("lvlAlertText").textContent = "WAVE 1";
+        document.getElementById("potionBar").style.display = "none";
+        document.getElementById("lvlAlertText").style.display = "inline-block";
+        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+
+        setTimeout(function(){
+            document.getElementById("potionBar").style.display = "flex";
+        document.getElementById("lvlAlertText").style.display = "none";
+        document.getElementById("lvlAlertAnimation").style.display = "none";
+        }, 4000);
+
         }
 
-        if (snowmanCounter == 10) {
+        if (snowmanCounter == 15) {
             var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanTwo' class='snowman' style='left: 40vw;'></div></div>";
             document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
         }
 
-        if (snowmanCounter == 20) {
+        if (snowmanCounter == 30) {
             var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanThree' class='snowman' style='left: 40vw;'></div></div>";
             document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
         }
 
         // SNOWMAN DEATH 
 
-        if (snowmanCounter == 25) {
+        if (snowmanCounter == 45) {
             killSnowman("all");
+            oonlyOne = 2;
+            waveOneScore = score;
+            snowmanCounter = 0;
         }
+    }
+
+    // WAVE 2
+
+    if (score >= waveOneScore + 100) {
+        snowmanCounter += 1;
+
+        if (snowmanCounter == 1) {
+            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanOne' class='snowman' style='left: 40vw;'></div></div>";
+            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpeed = 2;
+
+            // WAVE 2 ALERT
+
+            document.getElementById("lvlAlertText").textContent = "WAVE 1";
+        document.getElementById("potionBar").style.display = "none";
+        document.getElementById("lvlAlertText").style.display = "inline-block";
+        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+
+        setTimeout(function(){
+            document.getElementById("potionBar").style.display = "flex";
+        document.getElementById("lvlAlertText").style.display = "none";
+        document.getElementById("lvlAlertAnimation").style.display = "none";
+        }, 4000);
+        
+        }
+
+        if (snowmanCounter == 10) {
+            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanTwo' class='snowman' style='left: 40vw;'></div></div>";
+            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpeed = 2;
+        }
+
+
+        // SNOWMAN MOVE
+
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter < 10)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
+        }
+
+        if ((snowmanCounter % 2 == 0) && (snowmanCounter > 10) && (snowmanCounter < 20)) {
+            snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
+            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "double");
+        }
+
+
 
     }
 
@@ -263,35 +326,35 @@ function lvl2Pre() {
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 5); 
         }
 
-        if (counter == 85) {
+        if (counter == 100) {
             currentTime = 6; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 5);
         }
-        if (counter == 100) {
+        if (counter == 125) {
             currentTime = 7; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 5);
         }
 
-        if (counter == 120) {
+        if (counter == 150) {
             currentTime = 8; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 3);
         }
 
-        if (counter == 140) {
+        if (counter == 180) {
             currentTime = 9; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 2);
         }
-        if (counter == 160) {
+        if (counter == 200) {
             currentTime = 10; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 1);
         }
 
-        if (counter == 180) {
+        if (counter == 230) {
             currentTime = 11; 
             clearInterval(lvl2moveItemsRepeat);
             lvl2moveItemsRepeat = setInterval(lvl2moveItems, 1);
@@ -619,7 +682,7 @@ function lvl2SnowballEffect(evt) {
 
 // SNOWMAN
 
-function snowmanMove(whereAt, snowmanID, speed) {
+function snowmanMove(whereAt, snowmanID, speed, hitType) {
     var currentSnowmanID = snowmanID;
     var currentSpeed = speed * 10;
     var snowman = document.getElementById(currentSnowmanID);
@@ -627,6 +690,7 @@ function snowmanMove(whereAt, snowmanID, speed) {
     var goTo = parseInt(whereAt);
     var tempPos = 0;
     var localCounter = 0;
+    var currentHitType = hitType;
     // CALC WHERE TO MOVE TO
 
     // MOVE BACKWARDS
@@ -634,7 +698,7 @@ function snowmanMove(whereAt, snowmanID, speed) {
         var calcPos = currentPosition - whereAt;
         var snowmanBackRepeat = setInterval(moveSnowmanBack, currentSpeed);
 
-        // SET MOVING BACKGROUND
+        // SET SNOWMAN MOVING BACKGROUND
 
         snowman.style.background = "url('img/lvl2/snowman/snowman_move.png')"
         snowman.style.animation = "snowman_move 400ms steps(5) infinite";
@@ -642,7 +706,7 @@ function snowmanMove(whereAt, snowmanID, speed) {
 
         setTimeout(function(){
             clearInterval(snowmanBackRepeat)
-            snowmanThrow(currentSnowmanID);
+            snowmanThrow(currentSnowmanID, currentHitType);
             }, (calcPos * currentSpeed));
 
         function moveSnowmanBack() {
@@ -662,7 +726,7 @@ function snowmanMove(whereAt, snowmanID, speed) {
 
         setTimeout(function(){
             clearInterval(snowmanForwardRepeat)
-            snowmanThrow(currentSnowmanID);
+            snowmanThrow(currentSnowmanID, currentHitType);
             }, (calcPos * currentSpeed));
 
         function moveSnowmanForward() {
@@ -676,15 +740,17 @@ function snowmanMove(whereAt, snowmanID, speed) {
 
 // THROW
 
-function snowmanThrow(currentSnowmanID) {
+function snowmanThrow(currentSnowmanID, currentHitType) {
     var currentSnowman = currentSnowmanID;
     var snowman = document.getElementById(currentSnowman);
 
+    switch(currentHitType){
+        case "single":
     snowman.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
     snowman.style.animation = "snowman_attack 400ms steps(6)";
     snowman.style.backgroundSize= "600% 100%";
 
-    var currentPos = parseInt(snowman.style.getPropertyValue("left"));
+    var currentPos = parseInt(snowman.style.getPropertyValue("left") + 1);
 
     var tempSnowBall = snowballNode.cloneNode(true);
     tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
@@ -702,6 +768,44 @@ function snowmanThrow(currentSnowmanID) {
             evt.target.style.backgroundSize= "400% 100%";
         });
     });
+        break;
+
+        case "double":
+            console.log("once");
+                snowman.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
+                snowman.style.animation = "snowman_attack 400ms steps(6) 1";
+                snowman.style.backgroundSize= "600% 100%";
+                var currentPos = parseInt(snowman.style.getPropertyValue("left") + 1);
+                var tempSnowBall = snowballNode.cloneNode(true);
+                tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
+                tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
+                mainContainerr.prepend(tempSnowBall);
+                var snowmans = snowman;
+                snowmans.addEventListener("animationend", doubleHit);
+        break;
+    }
+
+
+    
+
+}
+
+function doubleHit(evt) {
+    evt.target.removeEventListener("animationend", doubleHit);
+    setTimeout( function(){
+    evt.target.style.animation = "none";
+    evt.target.offsetHeight;
+    evt.target.style.animation = null;
+    evt.target.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
+    evt.target.style.animation = "snowman_attack 400ms steps(6) 1";
+    evt.target.style.backgroundSize= "600% 100%";
+
+var currentPos = parseInt( evt.target.style.getPropertyValue("left") + 1);
+var tempSnowBall = snowballNode.cloneNode(true);
+tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
+tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
+mainContainerr.prepend(tempSnowBall);
+    }, 200);
 
 }
 
