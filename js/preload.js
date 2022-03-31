@@ -1,6 +1,34 @@
 "use strict";
 
-window.onload = preloadFunction;
+window.onload = unlockVersion;
+
+function unlockVersion() {
+
+  if (localStorage.getItem("betaVersionUnlocked") !== "true") {
+    document.getElementById("endScreenWrapper").style.display = "none";
+    document.getElementById("startScreenWrapper").style.display = "none";
+    document.getElementById("mainWrapper").style.display = "none";
+    document.getElementById("preloadScreen").style.display = "none";
+    document.getElementById("unlockScreen").style.display = "flex";
+  }
+  
+
+
+  if (localStorage.getItem("betaVersionUnlocked") == "true") {
+    document.getElementById("unlockScreen").style.display = "none";
+    document.getElementById("preloadScreen").style.display = "block";
+    preloadFunction()
+  }
+}
+
+function unlockVersionCheck() {
+  var codeVal = document.getElementById("unlockInput").value;
+  console.log(codeVal);
+  if (codeVal == "beta20523"){
+    localStorage.setItem("betaVersionUnlocked", "true");
+    unlockVersion();
+  }
+}
 
 function preloadFunction(){
 

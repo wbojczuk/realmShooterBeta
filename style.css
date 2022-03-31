@@ -46,6 +46,15 @@ body {
     opacity: 0.02;
 }
 
+.unlock-screen {
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    background-image: url("img/padlock.png");
+    background-size: cover;
+    background-position: 50% -30vh;
+}
+
 .preload-screen {
     display: block;
     height: 100vh;
