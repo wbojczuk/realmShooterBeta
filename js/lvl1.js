@@ -20,7 +20,13 @@ var lvl1moveItemsRepeat;
 function lvl1Pre() {
     
     
-            
+            // SET Normal HEARTS
+
+    var hearts = document.querySelectorAll(".heart-img");
+
+    for (var i = 0; i < hearts.length; i++) {
+        hearts[i].style.backgroundImage = "url('img/heart.png')";
+    }
 
    
                 randomNum1 = Math.floor(getRndInteger(5, 120));

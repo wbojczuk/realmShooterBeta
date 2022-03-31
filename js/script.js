@@ -94,13 +94,10 @@ function mainMenu() {
     removePowers();
     
 
-    // Remove current falling rows
+    // Clear Main Container
 
-    var fallingCount = document.querySelectorAll(".falling-container");
-    var fallingCountLength = fallingCount.length;
-
-    for (let i = 0; i < fallingCountLength; i++) {
-        fallingCount[i].remove();
+    while (mainContainerr.firstChild !== null) {
+        mainContainerr.removeChild(mainContainerr.firstChild);
     }
 
 
@@ -335,15 +332,11 @@ function restart() {
     document.getElementById("mainWrapper").style.display = "block";
     document.getElementById("endScreenWrapper").style.display = "none";
 
-    // Remove current falling rows
+    // Clear Main Container
 
-    var fallingCount = document.querySelectorAll(".falling-container");
-    var fallingCountLength = fallingCount.length;
-
-    for (let i = 0; i < fallingCountLength; i++) {
-        fallingCount[i].remove();
+    while (mainContainerr.firstChild !== null) {
+        mainContainerr.removeChild(mainContainerr.firstChild);
     }
-
 
     // RESET HEARTS
 

@@ -29,7 +29,7 @@ var leftPageTitles = [
     
   
    //lvl1 second page  ITEMS INDEX1
-   "<div class='index-title'>PLOT</div>",
+   "<div class='index-title'>How To Win</div>",
 
   //  ITEMS
   "<span>The Snowflake Item Appears Once Per Game</span><div class='center'><span>After Clicking On It, you will recieve the <a onclick='changePage(8)' href='#' class='intext-link'>Time Frost Power.</a></span>",
@@ -61,7 +61,7 @@ var leftPageTitles = [
 <a onclick='changePage(9)' href='#' class='tut-index-link'>Time Frost</a>",
 
 // Second for first level
-"<div class='index-title'>Plot</div>",
+"<div class='index-title'>Misc</div>",
  ];
 
  var rightVisual = [
