@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.tutorial-wrapper {
+    height: 85vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: -6vw;
+}
+
+.tutorial-container {
+    display: inline-flex;
+    height: 80vh;
+    width: 50vw;
+    align-items: flex-start;
+    background-image: url('img/tutorial_book.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: "Kaushan Script", cursive;
+    font-size: 1.7vw;
+}
+.back-to-menu-img {
+    position: relative;
+    top: 2vw;
+    left: 1vw;
+    display: inline-block;
+    height: 5vw;
+    width: 5vw;
+    background-image: url("img/mm.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.back-to-menu {
+    height: 10vw;
+    width: 12vw;
+    position: relative;
+    left: -2vw;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 1.2vw;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+.back-to-menu:hover {
+    color: white;
+   }
+.tut-level-title {
+    display: block;
+    position: relative;
+    top: -6vh;
+    text-align: center;
+    font-size: 3vw;
+    font-family: "Kaushan Script", cursive;
+    color: #afc9ff;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.678),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.tut-text-left {
+    display: block;
+    width: 46%;
+    padding: 2% 2% 2% 4%;
+    height: 60vw;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.tut-text-right {
+    display: block;
+    width: 50%;
+    padding: 2% 2% 2% 6%;
+    height: 100%;
+    justify-content: right;
+}
+.tut-innertext-left {
+    display: inline-block;
+    width: 100%;
+}
+
+.tut-title {
+    display: none;
+    font-size: 3vw;
+    border-bottom: 1px solid black;
+    text-align: center;
+    
+}
+
+.tut-visual-title {
+    font-size: 3vw;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.tut-visual {
+    margin-top: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tutorial-visual-icon {
+    height: 6vw;
+    width: 6vw;
+    margin: 0 1vw;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    
+}
+
+.tut-innertext-right {
+    display: inline-block;
+    width: 100%;
+}
+
+.tut-rarity-title {
+    margin-top: 2vw;
+    font-size: 3vw;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+.tut-rarity {
+    text-align: center;
+}
+
+.tutorial-icon {
+    height: 3vw;
+    width: 3vw;
+    margin: 0 1vw;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    
+}
+
+.tutorial-item {
+    height: 4vw;
+    width: 4vw;
+    margin: 0 1vw;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tutorial-title {
+    width: auto;
+    height: auto;
+    font-family: "Kaushan Script", sans-serif;
+    text-align: center;
+    font-size: 4vw;
+    padding: 0 2vw;
+    width: 40vw;
+    color: #afc9ff;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.index-title {
+    text-align: center;
+    margin: 1vw 2vw 1vw 2vw;
+    border-bottom: 1px solid #000;
+    font-size: 3vw;;
+}
+
+.tut-index-link {
+    display: block;
+    text-align: center;
+    color: rgb(54, 54, 54);
+}
+
+.intext-link {
+    color: rgb(54, 54, 54);
+}
+
+.tut-index-link:hover { 
+    color: rgb(117, 117, 117);
+}
+
+.tut-items {
+    
+}
+
+.iconss {
+    font-size: 4vw;
+    color: #afc9ff;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.iconss:hover {
+    cursor: pointer;
+}
+
+.tutorial-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-index {
+    display: block;
+    width: 100%;
+    text-align: right;
+    font-size: 1.5vw;
+    color:#000;
+    text-decoration: none;
+    margin-bottom: 1vw;
+}
+
+.back-to-index:hover {
+    color: rgb(117, 117, 117);
+}
+.tut-right-wrapper {
+    display: none;
+}

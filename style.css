@@ -1,0 +1,576 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url('img/preload_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Custom Classes */
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* CLICKBOX */
+
+.clickbox {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vw;
+    width: 10vw;
+    z-index: 4;
+    user-select: none;
+}
+
+.purple-potion-clickbox {
+    z-index: 3;
+    height: 5vw;
+    width: 6.5vw;
+}
+
+/* MAIN WRAPPER */
+.main-wrapper {
+    display: none;
+}
+
+.preload {
+    z-index: 0;
+    opacity: 0.02;
+}
+
+.preload-screen {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    user-select: none;
+}
+#loading {
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+    width: 100%;
+  }
+  .loading {
+    display: inline-block;
+    width: 7vw;
+    height: 7vw;
+    user-select: none;
+}
+  
+  #loadingBar {
+    display: flex;
+    width: 100%;
+    align-items: right;
+    justify-content: right;
+  }
+
+  .preload-title-wrapper {
+      margin-top: 5vw;
+      display: flex;
+      width: 100vw;
+      height: 10vw;
+      align-items: center;
+      justify-content: center;
+
+  }
+  .hint-wrapper {
+      position: relative;
+      top: -8vw;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .hint-icon {
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    user-select: none;
+    transform: translateX(-4vw);
+}
+
+
+  .preload-hint {
+      margin-top: 8vw;
+      display: inline-block;
+      text-align: left;
+      width: auto;
+      height: 10vw;
+      font-size: 2vw;
+      color: white;
+      transform: translateX(-5vw);
+  }
+
+  .preload-title {
+      display: inline-block;
+      width: 80vw;
+    height: 15vw;
+      background-image: url("img/preload_title.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+  }
+/* Main Container */
+
+.main-container {
+    width: 100vw;
+    height: 96vh;
+}
+
+.thing-one {
+    
+    display: inline-block;
+    width: 5.5vw;
+    height: 5vw;
+    user-select: none;
+}
+
+.blue-crystal {
+    display: inline-block;
+    width: 5vw;
+    height: 5.2vw;
+    user-select: none;
+}
+
+.thing-one-hitbox {
+    height: .001vw;
+    width: .001vw;
+}
+
+/* DOES NOT GET HITBOX */
+.red-potion {
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    user-select: none;
+}
+
+.purple-potion {
+    display: inline-block;
+    width: 6.5vw;
+    height: 5vw;
+    user-select: none;
+}
+
+.snowflake {
+    display: inline-block;
+    width: 7vw;
+    height: 7vw;
+    user-select: none;
+}
+
+
+
+.extra-heart-orb {
+    
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    
+    user-select: none;
+    
+
+}
+
+.falling-container {
+    
+    position: relative;
+    
+    padding: 0 2%;
+    width: 95.5%;
+    height: 0.0001vw;
+    user-select: none;
+}
+
+/* Hearts */
+
+.heart-img {
+    display: inline-block;
+    height: 4vw;
+    width: 4vw;
+    background-image: url('img/heart.png');
+    background-size: cover;
+    
+}
+
+.heart-img-wrapper {
+    display: inline-block;
+    margin-left: 2vw;
+}
+
+.main-bar {
+    display: flex;
+    width: 100vw;
+    height: 4vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    user-select: none;
+}
+
+.main-bar-left {
+    display: flex;
+    width: 70%;
+    height: 4vw;
+    align-items: center;
+    justify-content: left;
+}
+
+.main-bar-right {
+    display: flex;
+    width: 30%;
+    height: 4vw;
+    align-items: center;
+    justify-content: right;
+}
+
+/* SCORES */
+
+.scoreboard {
+    display: inline-block;
+    font-family: "Kaushan Script", cursive;
+    font-size: 3vw;
+    margin-left: 2vw;
+    position: relative;
+    top: 0;
+}
+
+/* TOP RIGHT ICONS */
+
+.power-icon {
+    position: relative;
+    display: inline-block;
+    height: 4vw;
+    width: 4vw;
+    margin: 1vw 1vw 0 1vw;
+}
+
+.power1 {
+    background-image: url('img/icons/power1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 10px rgba(214, 48, 255, 0.767);
+}
+
+.power2 {
+    background-image: url('img/icons/power2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+/* Start Screen */
+
+.start-screen-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    user-select: none;
+}
+
+.version {
+    display: block;
+    width: 100vw;
+    text-align: right;
+    color: #fff;
+    position: relative;
+    top: -4vh;
+
+}
+
+.carousel-containerr {
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+    position: relative;
+    left: -5vw;
+}
+
+.carousel-wrapper {
+    display: inline-block;
+    width: 70vw;
+    height: auto;
+    
+}
+
+.carousel-control-next-icon{
+   width: 5vw;
+   height: 5vw;
+   background-image: url("img/fwd_button.svg");
+}
+
+.carousel-wrapper {
+    box-shadow: rgba(0, 0, 4, 0.24) 0px 9px 24px;
+}
+
+.carousel-control-prev-icon{
+    width: 5vw;
+    height: 5vw;
+    background-image: url("img/prev_button.svg");
+ }
+
+
+/* End Screen */
+
+ .end-screen-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: #ff3fff60;
+    background: -webkit-linear-gradient(top left, #FF3FFF60, #FCC2DF60);
+    background: -moz-linear-gradient(top left, #FF3FFF60, #FCC2DF60);
+    background: linear-gradient(to bottom right, #FF3FFF60, #FCC2DF60);
+    display: none;
+    user-select: none;
+ }
+
+ .end-screen-title {
+    padding-top: 5vw;
+    font-size: 8vw;
+    text-align: center;
+    width: 100%;
+    font-family: 'Tangerine', cursive;
+ }
+
+ .end-screen-score {
+     font-size: 6vw;
+     text-align: center;
+     margin-bottom: 2vw;
+     width: 100%;
+     font-family: 'Tangerine', cursive;
+
+ }
+
+ .restart-wrapper {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     user-select: none;
+ }
+
+ .restart {
+    height: 6vw;
+     width: 25vw;
+     font-size: 3vw;
+     font-family: "Kaushan Script", cursive;
+     background-color: #25587f;
+     color: #afc9ff;
+     border: 1px solid rgb(106, 117, 175);
+     border-radius: .5vw;
+ }
+
+ .restart:hover {
+    cursor: pointer;
+     background-color: #347bb1;
+    color:#afc8ffbd;
+ }
+
+ .main-menu-button {
+    height: 6vw;
+     width: 25vw;
+     font-size: 3vw;
+     font-family: "Kaushan Script", cursive;
+     background-color: #25587f;
+     color: #afc9ff;
+     border: 1px solid rgb(106, 117, 175);
+     border-radius: .5vw;
+     margin-right: 5vw;
+     user-select: none;
+ }
+
+ .main-menu-button:hover {
+    cursor: pointer;
+    background-color: #347bb1;
+    color:#afc8ffbd;
+ }
+
+  .checki{
+    display:flex;
+     flex-direction:column;
+     width:70px;
+     cursor:pointer;
+     z-index: 6;
+     margin-left: 2vw;
+   }
+   
+   .checki span{
+     background: #2e6ea0;
+     border-radius:10px;
+     height:7px;
+     margin: 7px 0;
+     transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+   
+   }
+   .checki:hover span{
+    background: #afc9ff;
+   }
+   
+   
+   .checki span:nth-of-type(1){
+     width:50%;
+     
+   }
+   
+   .checki span:nth-of-type(2){
+     width:100%;
+   }
+   
+   
+   .checki span:nth-of-type(3){
+     width:75%;
+    
+   }
+   
+   
+   input[type="checkbox"]{
+     display:none;
+   }
+   
+   
+   input[type="checkbox"]:checked ~ span:nth-of-type(1){
+     transform-origin:bottom;
+     transform:rotatez(45deg) translate(8px,0px)
+   }
+   
+   
+   input[type="checkbox"]:checked ~ span:nth-of-type(2){
+     
+     transform-origin:top;
+     transform:rotatez(-45deg)
+   }
+   
+   
+   input[type="checkbox"]:checked ~ span:nth-of-type(3){
+     
+     transform-origin:bottom;
+     width:50%;
+     transform: translate(30px,-11px) rotatez(45deg);
+   
+   }
+   
+   .pause-page {
+       position: relative;
+       top: -6.1vw;
+       display: none;
+       align-items: center;
+       justify-content: center;
+       height: 106.1vh;
+       width: 100vw;
+       background-color: rgba(0, 0, 0, 0.548);
+       user-select: none;
+       cursor: default;
+   }
+   .resume-game-button {
+    height: 6vw;
+     width: 25vw;
+     font-size: 3vw;
+     font-family: "Kaushan Script", cursive;
+     background-color: #25587f;
+     color: #afc9ff;
+     border: 1px solid rgb(106, 117, 175);
+     border-radius: .5vw;
+     user-select: none;
+     
+     
+ }
+
+ .resume-game-button:hover {
+    cursor: pointer;
+    background-color: #347bb1;
+    color:#afc8ffbd;
+ }
+
+ 
+.lvl-alert {
+    height: 4vw;
+    width: auto;
+}
+
+.guidebook-button {
+    height: 10vw;
+    width: 10vw;
+    background-image: url("img/tutorial_book.png");
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0px solid transparent;
+    border-radius: 50%;
+    position: relative;
+    top: -30vh;
+    left: -2vw;
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 1.7vw;
+    line-height: 5;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+.guidebook-button:hover {
+ color: #000;
+}
+ 
+ #lvlAlertText {
+    display: none;
+    padding-right: 2vw;
+    font-size: 3vw;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+   font-family: "Kaushan Script", sans-serif;
+ }
+
+ .alert-icon {
+     display: none;
+     position: relative;
+     height: 8vw;
+     width: 8vw;
+    user-select: none;
+     
+ }
+ .potion-bar {
+    padding-right: 2vw;
+     display: flex;
+     align-items: center;
+     justify-content: right;
+     width: 100%;
+     height: 100%;
+ }
+ body {
+     box-shadow: -10px 5px 5px #000;
+ }
+
+ @keyframes snow-shake {
+     0%, 10% {
+        backdrop-filter: blur(1px);
+     }
+
+     20%, 80% {
+        backdrop-filter: blur(1.5px);
+    }
+
+    30%, 50%, 70% {
+        backdrop-filter: blur(2px);
+    }
+
+    40%, 60% {
+        backdrop-filter: blur(1px);
+    }
+ }
