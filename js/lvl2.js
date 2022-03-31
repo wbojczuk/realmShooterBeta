@@ -111,7 +111,7 @@ function lvl2Pre() {
         
 
         // Bomb Generation
-        if ((score < 100) || ((score > waveOneScore) && (score < waveOneScore + 100))){
+        if ((score < 100) || ((score >= waveOneScore) && (score < waveOneScore + 100))){
         if (counter % 3 == 0) {   
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
  
@@ -196,13 +196,14 @@ function lvl2Pre() {
 
         // SNOWMAN DEATH 
 
-        if (snowmanCounter == 45) {
+        if (snowmanCounter == 48) {
             killSnowman("all");
             oonlyOne = 2;
             waveOneScore = score;
             snowmanCounter = 0;
 
             // WON WAVE 1 ALERT
+            document.getElementById("lvlAlertText").style.fontSize = "2vw";
             document.getElementById("lvlAlertAnimation").classList.remove("alert-icon");
             document.getElementById("lvlAlertAnimation").classList.add("alert-icon-green");
             document.getElementById("lvlAlertText").textContent = "WAVE 1 COMPLETED!";
@@ -211,11 +212,12 @@ function lvl2Pre() {
         document.getElementById("lvlAlertAnimation").style.display = "inline-block";
 
         setTimeout(function(){
-            document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
-            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
             document.getElementById("potionBar").style.display = "flex";
         document.getElementById("lvlAlertText").style.display = "none";
         document.getElementById("lvlAlertAnimation").style.display = "none";
+        document.getElementById("lvlAlertText").style.fontSize = "3vw";
+            document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
+            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
         }, 4000);
 
         }
@@ -258,28 +260,31 @@ function lvl2Pre() {
             snowmanSpeed = 1;
         }
 
-        if (snowmanCounter == 20) {
+        if (snowmanCounter == 22) {
         killSnowman("all");
         snowmanCounter = 0;
 
 
 
-        // WON WAVE 2 ALERT
-            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon");
-            document.getElementById("lvlAlertAnimation").classList.add("alert-icon-green");
-            document.getElementById("lvlAlertText").textContent = "WAVE 2 COMPLETED!";
-        document.getElementById("potionBar").style.display = "none";
-        document.getElementById("lvlAlertText").style.display = "inline-block";
-        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+        // WON WAVE 1 ALERT
+        document.getElementById("lvlAlertText").style.fontSize = "2vw";
+        document.getElementById("lvlAlertAnimation").classList.remove("alert-icon");
+        document.getElementById("lvlAlertAnimation").classList.add("alert-icon-green");
+        document.getElementById("lvlAlertText").textContent = "WAVE 2 COMPLETED!";
+    document.getElementById("potionBar").style.display = "none";
+    document.getElementById("lvlAlertText").style.display = "inline-block";
+    document.getElementById("lvlAlertAnimation").style.display = "inline-block";
 
-        setTimeout(function(){
-            document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
-            document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
-            document.getElementById("potionBar").style.display = "flex";
-        document.getElementById("lvlAlertText").style.display = "none";
-        document.getElementById("lvlAlertAnimation").style.display = "none";
-        }, 4000);
-        }
+    setTimeout(function(){
+        document.getElementById("potionBar").style.display = "flex";
+    document.getElementById("lvlAlertText").style.display = "none";
+    document.getElementById("lvlAlertAnimation").style.display = "none";
+    document.getElementById("lvlAlertText").style.fontSize = "3vw";
+        document.getElementById("lvlAlertAnimation").classList.add("alert-icon");
+        document.getElementById("lvlAlertAnimation").classList.remove("alert-icon-green");
+    }, 4000);
+        
+}
 
 
 
@@ -844,7 +849,6 @@ function snowmanThrow(currentSnowmanID, currentHitType) {
 
 function doubleHit(evt) {
     evt.target.removeEventListener("animationend", doubleHit);
-    setTimeout( function(){
     evt.target.style.animation = "none";
     evt.target.offsetHeight;
     evt.target.style.animation = null;
@@ -857,11 +861,10 @@ var tempSnowBall = snowballNode.cloneNode(true);
 tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
 tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
 mainContainerr.prepend(tempSnowBall);
-    }, 200);
 
 }
 
-// KILL ALL SNOWMEN
+// KILL SNOWMEN
 
 function killSnowman(amount){
     console.log("wut");
@@ -883,6 +886,15 @@ function killSnowman(amount){
         allSnowmanContainers[i].remove();
        }
        },500);
+    } else {
+        var selectedSnowman = document.getElementById(amount);
+        selectedSnowman.style.background = "url('img/lvl2/snowman/snowman_death.png')"
+        selectedSnowman.style.animation = "snowman_death 500ms steps(6)";
+        selectedSnowman.style.backgroundSize= "600% 100%";
+
+        setTimeout(function(){
+            selectedSnowman.parentElement.remove();
+        }, 500);
     }
 
 
