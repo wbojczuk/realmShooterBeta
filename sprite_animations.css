@@ -328,3 +328,8 @@
     from{background-position: 0% 0;}
     to{background-position: -600% 0;}
 }
+
+@keyframes snowman_spawn {
+    from{background-position: 0% 0;}
+    to{background-position: -600% 0;}
+}

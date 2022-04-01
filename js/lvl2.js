@@ -2,6 +2,7 @@
 var allThingOneHitbox;
 var allThingOneLengthHitbox;
 var snowballNode;
+var lvl2SnowmanNode;
 var snowmanCounter = 0;
 var snowmanSpeed = 0;
 var waveOneScore = 100000;
@@ -38,9 +39,17 @@ function lvl2Pre() {
 
     //  Set InterVals
     
-     
-     
-    
+
+    //  SNOWMAN NODE
+    var snowmanContainerNode = document.createElement("div");
+    snowmanContainerNode.setAttribute("class", "snowman-container");
+
+    var snowmanNode = document.createElement("div");
+    snowmanNode.setAttribute("class", "snowman");
+
+    snowmanContainerNode.append(snowmanNode);
+
+    lvl2SnowmanNode = snowmanContainerNode.cloneNode(true);
 
 
     //  NODE CREATIONS
@@ -161,8 +170,7 @@ function lvl2Pre() {
 
         // SNOWMAN GENERATION
         if (snowmanCounter == 1) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanOne' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpawn("snowmanOne");
             snowmanSpeed = 2;
 
             // WAVE 1 ALERT
@@ -179,14 +187,13 @@ function lvl2Pre() {
 
         }
 
+
         if (snowmanCounter == 15) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanTwo' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpawn("snowmanTwo");
         }
 
         if (snowmanCounter == 30) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanThree' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpawn("snowmanThree");
         }
 
         // SNOWMAN DEATH 
@@ -225,8 +232,7 @@ function lvl2Pre() {
         snowmanCounter += 1;
 
         if (snowmanCounter == 1) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanOne' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpawn("snowmanOne");
             snowmanSpeed = 2;
 
             // WAVE 2 ALERT
@@ -245,14 +251,11 @@ function lvl2Pre() {
         }
 
         if (snowmanCounter == 10) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanTwo' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
-            snowmanSpeed = 2;
+            snowmanSpawn("snowmanTwo");
         }
 
         if (snowmanCounter == 20) {
-            var snowmanContainerHTML = "<div class='snowman-container'><div id='snowmanThree' class='snowman' style='left: 40vw;'></div></div>";
-            document.getElementById("mainContainer").insertAdjacentHTML("afterbegin", snowmanContainerHTML);
+            snowmanSpawn("snowmanThree");
             snowmanSpeed = 1;
         }
 
@@ -295,6 +298,9 @@ function lvl2Pre() {
 
         if ((snowmanCounter % 2 == 0) && (snowmanCounter > 10) && (snowmanCounter < 20)) {
             snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
+        }
+
+        if ((snowmanCounter % 3 == 0) && (snowmanCounter > 10) && (snowmanCounter < 20)) {   
             snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "double");
         }
 
@@ -302,6 +308,12 @@ function lvl2Pre() {
             snowmanMove(getRndInteger(1, 90), "snowmanOne", snowmanSpeed, "double");
             snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "single");
             snowmanMove(getRndInteger(1, 90), "snowmanThree", snowmanSpeed, "double");
+        }
+
+        if ((snowmanCounter % 1 == 0) && (snowmanCounter > 20) && (snowmanCounter < 30)) {
+            
+            snowmanMove(getRndInteger(1, 90), "snowmanTwo", snowmanSpeed, "single");
+            
         }
 
 
@@ -710,7 +722,7 @@ function lvl2SnowballEffect(evt) {
     this.classList.remove("unclicked");
     this.style.zIndex = "1";
     var audio = new Audio('sounds/lvl2/snowball_explosion.mp3');
-    audio.volume = 0.1;
+    audio.volume = 0.05;
     audio.playbackRate = 1.2;
     audio.play();
     var targetElementTemp = this.querySelectorAll(".snowball");
@@ -737,6 +749,33 @@ function lvl2SnowballEffect(evt) {
 // MOB MOVEMENT
 
 // SNOWMAN
+
+function snowmanSpawn(snowmanID) {
+
+    // IDS ARE IN THE FORMAT "snowmanOne, snowmanTwo, etc"
+
+    var tempSnowMan = lvl2SnowmanNode.cloneNode(true);
+
+    // SET ID
+
+    tempSnowMan.firstChild.setAttribute("id", snowmanID);
+    tempSnowMan.firstChild.setAttribute("style", "left:" + Math.floor(getRndInteger(1, 90)) + "vw");
+
+
+    // PREPEND TO MAINCONTANER
+    document.getElementById("mainContainer").prepend(tempSnowMan);
+
+    
+setTimeout( function(){
+    var selectedSnowman = document.getElementById(snowmanID);
+    selectedSnowman.style.background = "url('img/lvl2/snowman/snowman_spawn.png')";
+        selectedSnowman.style.animation = "snowman_spawn 500ms steps(6)";
+        selectedSnowman.style.backgroundSize= "600% 100%";
+
+        selectedSnowman.addEventListener("animationend", snowmanIdle);
+},5)
+    
+}
 
 function snowmanMove(whereAt, snowmanID, speed, hitType) {
     var currentSnowmanID = snowmanID;
@@ -822,6 +861,7 @@ function snowmanThrow(currentSnowmanID, currentHitType) {
     snowman.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
     snowman.style.animation = "snowman_attack 400ms steps(6)";
     snowman.style.backgroundSize= "600% 100%";
+    snowman.addEventListener("animationend", snowmanIdle);
     var audio = new Audio('sounds/lvl2/snowman_throw.mp3');
     audio.volume = 0.8;
     audio.playbackRate = 1.2;
@@ -835,16 +875,7 @@ function snowmanThrow(currentSnowmanID, currentHitType) {
 
     mainContainerr.prepend(tempSnowBall);
 
-    snowman.addEventListener("animationend", function(evt){
-        evt.target.style.background = "url('img/lvl2/snowman/snowman_idle.png')"
-        evt.target.style.animation = "snowman_idle 400ms steps(4) infinite";
-        evt.target.style.backgroundSize= "400% 100%";
-        evt.target.removeEventListener("animationend", function(){
-            evt.target.style.background = "url('img/lvl2/snowman/snowman_idle.png')"
-            evt.target.style.animation = "snowman_idle 400ms steps(4) infinite";
-            evt.target.style.backgroundSize= "400% 100%";
-        });
-    });
+    
         break;
 
         case "double":
@@ -889,16 +920,7 @@ function doubleHit(evt) {
     tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
     mainContainerr.prepend(tempSnowBall);
 
-    evt.target.addEventListener("animationend", function(evt){
-        evt.target.style.background = "url('img/lvl2/snowman/snowman_idle.png')"
-        evt.target.style.animation = "snowman_idle 400ms steps(4) infinite";
-        evt.target.style.backgroundSize= "400% 100%";
-        evt.target.removeEventListener("animationend", function(){
-            evt.target.style.background = "url('img/lvl2/snowman/snowman_idle.png')"
-            evt.target.style.animation = "snowman_idle 400ms steps(4) infinite";
-            evt.target.style.backgroundSize= "400% 100%";
-        });
-    });
+    evt.target.addEventListener("animationend", snowmanIdle);
 
 }
 
@@ -939,4 +961,13 @@ function killSnowman(amount){
     }
 
 
+}
+
+function snowmanIdle(evt) {
+    evt.target.removeEventListener("animationend", snowmanIdle);
+    evt.target.style.background = "url('img/lvl2/snowman/snowman_idle.png')";
+    evt.target.style.backgroundSize = "400% 100%";
+    evt.target.style.animation = "snowman_idle 400ms steps(4) infinite";
+    
+    
 }
