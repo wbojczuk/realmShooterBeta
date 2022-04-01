@@ -43,7 +43,7 @@ body {
 
 .preload {
     z-index: 0;
-    opacity: 0.02;
+    opacity: 0.05;
 }
 
 .unlock-screen {
@@ -338,10 +338,7 @@ body {
  .end-screen-wrapper {
     height: 100vh;
     width: 100vw;
-    background: #ff3fff60;
-    background: -webkit-linear-gradient(top left, #FF3FFF60, #FCC2DF60);
-    background: -moz-linear-gradient(top left, #FF3FFF60, #FCC2DF60);
-    background: linear-gradient(to bottom right, #FF3FFF60, #FCC2DF60);
+    background-color: rgba(0, 0, 0, 0.548);
     display: none;
     user-select: none;
  }

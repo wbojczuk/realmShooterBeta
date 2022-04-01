@@ -198,7 +198,7 @@
 .extra-heart-orb-explosion-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/extra_heart_orb_explosion_sprite.png') ;
+    background: url('img/extra_heart_orb_explosion_sprite.png');
     animation: extra_heart_orb_explosion 480ms steps(19) infinite;
     background-size: 1900% 1vw;
 }
@@ -206,7 +206,7 @@
 .blue-crystal-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/blue_crystal_sprite.png') ;
+    background: url('img/blue_crystal_sprite.png');
     animation: blue_crystal 390ms steps(73);
     background-size: 7300% 1vw;
 }
@@ -214,7 +214,7 @@
 .blue-crystal-explosion-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/blue_crystal_explosion_sprite.png') ;
+    background: url('img/blue_crystal_explosion_sprite.png');
     animation: blue_crystal_explosion 300ms steps(15);
     background-size: 1500% 1vw;
 }
@@ -230,7 +230,7 @@
 .snowflake-explosion-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/snowflake_explosion_sprite.png') ;
+    background: url('img/snowflake_explosion_sprite.png');
     animation: snowflake 300ms steps(16);
     background-size: 1600% 1vw;
 }
@@ -238,7 +238,7 @@
 .purple-potion-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/lvl1/purple_potion_sprite.png') ;
+    background: url('img/lvl1/purple_potion_sprite.png');
     animation: purple_potion 400ms steps(21);
     background-size: 2100% 1vw;
 }
@@ -246,7 +246,7 @@
 .purple-potion-explosion-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/lvl1/purple_potion_explosion_sprite.png') ;
+    background: url('img/lvl1/purple_potion_explosion_sprite.png');
     animation: snowflake 300ms steps(16);
     background-size: 1600% 1vw;
 }
@@ -273,7 +273,7 @@
 .alert-icon-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/alert_icon_sprite.png') ;
+    background: url('img/alert_icon_sprite.png');
     animation: hint 2000ms steps(35) infinite;
     background-size: 3500% 1vw;
 }
@@ -281,7 +281,7 @@
 .alert-icon-green-preload {
     height: 1vw;
     width: 1vw;
-    background: url('img/alert_icon_green_sprite.png') ;
+    background: url('img/alert_icon_green_sprite.png');
     animation: hint 2000ms steps(35) infinite;
     background-size: 3500% 1vw;
 }
@@ -293,7 +293,7 @@
     width: 4.6vw;
     height: 6vw;
     user-select: none;
-    background: url('img/lvl2/snowball_sprite.png') ;
+    background: url('img/lvl2/snowball_sprite.png');
     animation: snowball 400ms steps(6) infinite;
     background-size: 600% 100%;
     background-position: center;
@@ -308,18 +308,22 @@
     from{background-position: 0% 0;}
     to{background-position: -1300% 0;}
 }
+
 @keyframes snowman_idle {
     from{background-position: 0% 0;}
     to{background-position: -400% 0;}
 }
+
 @keyframes snowman_move {
     from{background-position: 0% 0;}
     to{background-position: -500% 0;}
 }
+
 @keyframes snowman_attack {
     from{background-position: 0% 0;}
     to{background-position: -600% 0;}
 }
+
 @keyframes snowman_death {
     from{background-position: 0% 0;}
     to{background-position: -600% 0;}

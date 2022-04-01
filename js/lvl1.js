@@ -9,11 +9,7 @@ var extraHeartOrbNode;
 var blueCrystalNode;
 var snowflakeNode;
 var power1Timeout;
-var lvl1generationRepeat;
-var lvl1testViewportRepeat;
-var lvl1power1Repeat;
-var lvl1checkPowersRepeat;
-var lvl1moveItemsRepeat;
+
 
 
 
@@ -157,7 +153,7 @@ function lvl1Pre() {
 
                 
                  lvl1testViewportRepeat = setInterval(lvl1testViewport, 10);
-                 lvl1checkPowersrepeat = setInterval(lvl1checkPowers, 100);
+                 lvl1CheckPowersRepeat = setInterval(lvl1checkPowers, 100);
                  lvl1moveItemsRepeat = setInterval(lvl1moveItems, 10);
                  lvl1generationRepeat = setInterval(lvl1Generation, 1000);
 
@@ -551,6 +547,7 @@ function lvl1Pre() {
             // Test if cell hitbox is in viewport
 
 function lvl1testViewport(){
+    
 
     allThingOneHitbox = document.querySelectorAll(".thing-one-hitbox");
     allThingOneLengthHitbox = allThingOneHitbox.length;
@@ -730,6 +727,7 @@ function lvl1testViewport(){
             
             
             function lvl1checkPowers() {
+                console.log("hello");
                 if (score >= 500 && onlyOne11 == 1) {
                     lvl1power1Repeat = setInterval(lvl1power1Function, 10);
                     onlyOne11 += 1;
