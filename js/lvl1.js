@@ -14,6 +14,14 @@ var power1Timeout;
 
 
 function lvl1Pre() {
+
+    // INITIALIZE PARTICLES
+    Particles.init({
+        selector: '.particle-background',
+        sizeVariations: 2,
+        color: "#ffffff",
+        maxParticles: 128
+      });
     
     
             // SET Normal HEARTS

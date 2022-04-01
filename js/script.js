@@ -58,6 +58,18 @@ setInterval(
 function mainMenu() {
     snowStorm.stop();
 
+    Particles.destroy();
+    // INSERT PARTICLES TO DOM
+    var particleHTML = "<canvas class='particle-background' style='position: absolute; left: 0; top: 0; z-index: -10;'></canvas>";
+    document.getElementById("body").insertAdjacentHTML("beforeend", particleHTML);
+    // INITIALIZE PARTICLES
+      Particles.init({
+        selector: '.particle-background',
+        sizeVariations: 3,
+        color: "#97E5FF",
+        maxParticles: 128
+      });
+
      // SET HIGHSCORE
      if (currentLvl == "lvl1"){
          if (parseInt(localStorage.getItem("FSlvl1HS")) < score) {
@@ -147,6 +159,12 @@ function preStartGame(sLvl) {
 }
 
 function startGame() {
+
+    Particles.destroy();
+    // INSERT PARTICLE CONTAINER TO DOM
+    var particleHTML = "<canvas class='particle-background' style='position: absolute; left: 0; top: 0; z-index: -10;'></canvas>";
+    document.getElementById("body").insertAdjacentHTML("beforeend", particleHTML);
+
     // RESET VARIABLES
 
     score = 0;

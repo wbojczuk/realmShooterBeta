@@ -131,6 +131,16 @@ function preloadFunction(){
         currentLvl = "menu";
         document.addEventListener("click", setBackgroundMusic);
         snowStorm.toggleSnow();
+        // INSERT PARTICLES TO DOM
+        var particleHTML = "<canvas class='particle-background' style='position: absolute; left: 0; top: 0; z-index: -10;'></canvas>";
+        document.getElementById("body").insertAdjacentHTML("beforeend", particleHTML);
+        // INITIALIZE PARTICLES
+          Particles.init({
+            selector: '.particle-background',
+            sizeVariations: 3,
+            color: "#97E5FF",
+            maxParticles: 128
+          });
       }, 5000);
         
       
