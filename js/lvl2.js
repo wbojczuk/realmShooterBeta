@@ -5,7 +5,7 @@ var snowballNode;
 var lvl2SnowmanNode;
 var snowmanCounter = 0;
 var snowmanSpeed = 0;
-var waveOneScore = 100000;
+var waveScore = 100000;
 
 function lvl2Pre() {
 
@@ -115,7 +115,7 @@ function lvl2Pre() {
         
 
         // Bomb Generation
-        if ((score < 50) || ((score >= waveOneScore) && (score < waveOneScore + 50))){
+        if ((score < 50) || ((score >= waveScore) && (score < waveScore + 50)) || (waveScore == 999999)){
         if (counter % 3 == 0) {   
             nodeContainer.appendChild(snowballNode.cloneNode(true)); 
  
@@ -201,7 +201,7 @@ function lvl2Pre() {
         if (snowmanCounter == 48) {
             killSnowman("all");
             oonlyOne = 2;
-            waveOneScore = score;
+            waveScore = score;
             
 
             // WON WAVE 1 ALERT
@@ -228,7 +228,7 @@ function lvl2Pre() {
 
     // WAVE 2
 
-    if ((score >= waveOneScore + 50) && (onlyOne1 == 1)) {
+    if ((score >= waveScore + 50) && (onlyOne1 == 1)) {
         snowmanCounter += 1;
 
         if (snowmanCounter == 1) {
@@ -264,7 +264,7 @@ function lvl2Pre() {
         
         onlyOne1 = 2;
         
-
+            waveScore = 999999;
 
 
         // WON WAVE 2 ALERT
@@ -746,7 +746,7 @@ function lvl2SnowballEffect(evt) {
     }, 290);
 }
 
-// MOB MOVEMENT
+// MOBSSS
 
 // SNOWMAN
 
@@ -829,7 +829,7 @@ function snowmanMove(whereAt, snowmanID, speed, hitType) {
         
 
         setTimeout(function(){
-            clearInterval(snowmanForwardRepeat)
+            clearInterval(snowmanForwardRepeat);
             snowmanThrow(currentSnowmanID, currentHitType);
             }, (calcPos * currentSpeed));
 
@@ -846,6 +846,11 @@ function snowmanMove(whereAt, snowmanID, speed, hitType) {
             tempPos = currentPosition + localCounter;
             snowman.style.left = tempPos + "vw";
         }
+    }
+
+    if (goTo == currentPosition) {
+        snowmanThrow(currentSnowmanID, currentHitType);
+            
     }
 
 }
@@ -894,35 +899,43 @@ function snowmanThrow(currentSnowmanID, currentHitType) {
                 var snowmans = snowman;
                 snowmans.addEventListener("animationend", doubleHit);
         break;
+
+        case "none":
+            snowman.style.background = "url('img/lvl2/snowman/snowman_idle.png')";
+            snowman.style.backgroundSize = "400% 100%";
+            snowman.style.animation = "snowman_idle 400ms steps(4) infinite";
+        break;
     }
 
 
     
 
+    function doubleHit(evt) {
+        evt.target.removeEventListener("animationend", doubleHit);
+        evt.target.style.animation = "none";
+        evt.target.offsetHeight;
+        evt.target.style.animation = null;
+        evt.target.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
+        evt.target.style.animation = "snowman_attack 400ms steps(6) 1";
+        evt.target.style.backgroundSize= "600% 100%";
+    
+        var audio = new Audio('sounds/lvl2/snowman_throw.mp3');
+        audio.volume = 0.8;
+        audio.playbackRate = 1;
+        audio.play();
+        var currentPos = parseInt( evt.target.style.getPropertyValue("left") + 1);
+        var tempSnowBall = snowballNode.cloneNode(true);
+        tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
+        tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
+        mainContainerr.prepend(tempSnowBall);
+    
+        evt.target.addEventListener("animationend", snowmanIdle);
+    
+    }
+
 }
 
-function doubleHit(evt) {
-    evt.target.removeEventListener("animationend", doubleHit);
-    evt.target.style.animation = "none";
-    evt.target.offsetHeight;
-    evt.target.style.animation = null;
-    evt.target.style.background = "url('img/lvl2/snowman/snowman_attack.png')"
-    evt.target.style.animation = "snowman_attack 400ms steps(6) 1";
-    evt.target.style.backgroundSize= "600% 100%";
 
-    var audio = new Audio('sounds/lvl2/snowman_throw.mp3');
-    audio.volume = 0.8;
-    audio.playbackRate = 1;
-    audio.play();
-    var currentPos = parseInt( evt.target.style.getPropertyValue("left") + 1);
-    var tempSnowBall = snowballNode.cloneNode(true);
-    tempSnowBall.firstChild.setAttribute("style", "left: " + currentPos +  "vw");
-    tempSnowBall.firstChild.addEventListener("click", lvl2SnowballEffect);
-    mainContainerr.prepend(tempSnowBall);
-
-    evt.target.addEventListener("animationend", snowmanIdle);
-
-}
 
 // KILL SNOWMEN
 

@@ -96,7 +96,7 @@ function lvl1Pre() {
                 redPotionNode.appendChild(redPotionClickboxNode.cloneNode(false));
                 redPotionNode.firstChild.appendChild(redPotionDisplayNode.cloneNode(false));
 
-                // RED POTION 
+                // PURPLE POTION 
 
                 var purplePotionClickboxNode = document.createElement("div");
                 purplePotionClickboxNode.setAttribute("class", "pow1 clickbox purple-potion-clickbox unclicked");
@@ -104,7 +104,7 @@ function lvl1Pre() {
                 var purplePotionDisplayNode = document.createElement("div");
                 purplePotionDisplayNode.setAttribute("class", "purple-potion");
 
-                // MAIN REDPOTION NODE
+                // MAIN Purple Potion NODE
                 purplePotionNode = fallingContainerNode.cloneNode(false);
                 purplePotionNode.appendChild(purplePotionClickboxNode.cloneNode(false));
                 purplePotionNode.firstChild.appendChild(purplePotionDisplayNode.cloneNode(false));
@@ -247,7 +247,7 @@ function lvl1Pre() {
              }
 
             //  PURPLE POTION GENERATION
-            if ( counter == Math.floor(getRndInteger(20 , 30))) {
+            if ( counter == 5) {
                 nodeContainer.appendChild(purplePotionNode.cloneNode(true));
             }
 
@@ -682,6 +682,7 @@ function lvl1testViewport(){
         
 
     }
+    
     var viewTest = document.getElementById("mainContainer");
     var viewSubject = viewTest.lastElementChild;
 
@@ -692,8 +693,22 @@ function lvl1testViewport(){
     for(let i = 0; i < fallingCountLength; i++){
     if (isInViewport(viewSubject) === false) {
 
-       viewSubject.remove();
+        // Purple potion trigger
 
+        var allPurplePotions = viewSubject.querySelectorAll(".purple-potion");
+        var allPurplePotionsLength  = allPurplePotions.length;
+
+        for (var s = 0; s < allPurplePotionsLength; s++) {
+            score += 15;
+            document.getElementById("score").textContent = score;
+            var audio = new Audio('sounds/lvl1/purple_potion_break.mp3');
+            audio.volume = 0.2;
+            audio.playbackRate = 1;
+            audio.play();
+        }
+
+// Remove falling containers out of viewport
+       viewSubject.remove();
        viewSubject = viewTest.lastElementChild;
 
     }
